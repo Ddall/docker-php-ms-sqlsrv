@@ -2,6 +2,7 @@
 FROM ddall/docker-php-ms
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
+    apt-transport-https \
     libmcrypt-dev \
     g++ \
     unixodbc-dev \
