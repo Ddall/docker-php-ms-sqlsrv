@@ -28,12 +28,12 @@ RUN pecl install sqlsrv-4.3.0 \
     && docker-php-ext-enable \
             sqlsrv \
             pdo_sqlsrv
-
+			
+ENV DEBIAN_FRONTEND=noninteractive
 #  mssql
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
     curl https://packages.microsoft.com/config/debian/8/prod.list | tee /etc/apt/sources.list.d/mssql-tools.list && \
     apt-get update && \
-    ACCEPT_EULA=Y  apt-get install -y mssql-tools=14.0.7.0-1 msodbcsql=13.1.9.2-1 && \
-    touch /tmp/dawapsqlsrv
+    ACCEPT_EULA=Y  apt-get install -y mssql-tools=14.0.7.0-1 msodbcsql=13.1.9.2-1 && touch /tmp/dawapsqlsrv
 
 WORKDIR /var/www/symfony
