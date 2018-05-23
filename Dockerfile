@@ -8,9 +8,10 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     unixodbc-dev \
     libxml2-dev \
     libssl-dev \
-	openssl \
-	openvpn \
-	locales
+    openssl \
+    openvpn \
+    locales \
+    supervisor
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
 
@@ -18,17 +19,17 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
 RUN pecl install sqlsrv-4.3.0 \
     && pecl install pdo_sqlsrv-4.3.0 \
     && docker-php-ext-install \
-            iconv \
-            mbstring \
-            intl \
-            mcrypt \
-            sockets \
-            zip \
-            xsl \
-            json \
+        iconv \
+        mbstring \
+        intl \
+        mcrypt \
+        sockets \
+        zip \
+        xsl \
+        json \
     && docker-php-ext-enable \
-            sqlsrv \
-            pdo_sqlsrv
+        sqlsrv \
+        pdo_sqlsrv
 			
 ENV DEBIAN_FRONTEND=noninteractive
 #  mssql
